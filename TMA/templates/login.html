@@ -1,0 +1,42 @@
+{% extends 'Navbar/projectnavbar.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+<body>
+    {% block body %}
+        {% if messages %}
+            {% for message in messages %}
+                {% if not message.tags %}
+                    <div class="error-message">{{ message }}</div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <div class="container1">
+            <div class="bodycontainer"><br><br><br><br>
+                <h1 align="center">Login Page</h1>
+                <form method="post" action="{% url 'login1' %}">
+                    {% csrf_token %}
+                    <table align="center" border="2">
+                        <tr>
+                            <td>Enter Username</td>
+                            <td><input type="text" name="username" required/></td>
+                        </tr>
+                        <tr>
+                            <td>Enter Password</td>
+                            <td><input type="password" name="password" required/></td>
+                        </tr>
+                        <tr>
+                            <td align="center"><input type="submit" value="Login"></td>
+                            <td align="center"><input type="reset" value="Clear"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>
